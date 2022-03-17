@@ -7,6 +7,19 @@
 
 #functions go here
 
+#checks that ticket name is not blank
+def not_blank(question):
+    valid = False
+
+    while not valid:
+        response = input(question)
+        if response != "":
+            return response
+        else:
+            print("Sorry - this can't be blank, "
+                  " please enter your name")
+
+
 #''''''''Main Routine '''''''
 
 #Set up dictionaries/lists needed to hold data
