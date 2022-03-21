@@ -11,4 +11,4 @@ while name != "xxx" and count < MAX_TICKETS:
     #get details
     name = input("Name: ")
     count += 1
-    
+
