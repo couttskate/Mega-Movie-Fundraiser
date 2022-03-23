@@ -1,7 +1,8 @@
 #kate coutts
-#15march2022
-#Mega Movie Fundraiser
 
+#15march2022
+
+#Mega Movie Fundraiser
 
 #import statements
 
@@ -62,12 +63,24 @@ while name != "xxx" and count < MAX_TICKETS:
 
     #Get name (can't be blank)
     name = not_blank("Name: ")
+    #end the loop if the exit code is entered
+    if name == "xxx":
+        break
+        
     count += 1
+
+    #Get age (between 12 and 130)
+    age= int_check("Age: ", 12, 130)
+
     if MAX_TICKETS - count != 1:
         print("You have {} seats left".format(MAX_TICKETS - count))
     else:
         # warns user that there is ONE seat left
         print("You have ONE seat left.")
+#end of tickets loop
+
+#calculate profit etc
+
 
 if count < MAX_TICKETS:
     print("You have sold {} tickets. \n There are {} places still avaliable.".format(count, MAX_TICKETS - count))
@@ -75,8 +88,7 @@ if count < MAX_TICKETS:
 else:
     print("You have sold all avaliable tickets.")
 
-    #Get age (between 12 and 130)
-age= int_check("Age: ", 12, 130)
+
     #Calculate ticket price
 
     #Loop to ask for snacks
