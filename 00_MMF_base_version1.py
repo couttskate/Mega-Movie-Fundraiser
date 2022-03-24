@@ -66,8 +66,6 @@ while name != "xxx" and count < MAX_TICKETS:
     if name == "xxx":
         break
 
-    count += 1
-
     #Get age (between 12 and 130)
     age= int_check("Age: ")
 
@@ -78,7 +76,9 @@ while name != "xxx" and count < MAX_TICKETS:
 
     elif age > 130:
         print("That is very old - it looks like a mistake.")
-        continue 
+        continue
+
+    count += 1
 
     if MAX_TICKETS - count != 1:
         print("You have {} seats left".format(MAX_TICKETS - count))
