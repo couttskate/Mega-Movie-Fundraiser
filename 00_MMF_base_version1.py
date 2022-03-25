@@ -51,12 +51,13 @@ def int_check(question):
 #start of loop
 
 #initialise loop so that it runs at least once
-
-name = ""
-count = 0
 MAX_TICKETS = 5
 
-while name != "xxx" and count < MAX_TICKETS:
+name = ""
+ticket_count = 0
+ticket_sales = 0
+
+while name != "xxx" and ticket_count < MAX_TICKETS:
 
     #get details
 
@@ -78,20 +79,37 @@ while name != "xxx" and count < MAX_TICKETS:
         print("That is very old - it looks like a mistake.")
         continue
 
-    count += 1
+    if age < 16:
+        ticket_price = 7.50
+    elif age > 64:
+        ticket_price = 6.50
+    else:
+        ticket_price = 10.50
 
-    if MAX_TICKETS - count != 1:
-        print("You have {} seats left".format(MAX_TICKETS - count))
+
+    ticket_count += 1
+    ticket_sales += ticket_price
+
+    print("{} : ${:.2f}".format(name, ticket_price))
+
+    if MAX_TICKETS - ticket_count != 1:
+        print("You have {} seats left".format(MAX_TICKETS - ticket_count))
     else:
         # warns user that there is ONE seat left
         print("You have ONE seat left.")
 #end of tickets loop
 
 #calculate profit etc
+ticket_profit = ticket_sales - (5 * ticket_count)
+print("Ticket profit: ${:.2f}".format(ticket_profit))
 
-
-if count < MAX_TICKETS:
-    print("You have sold {} tickets. \n There are {} places still avaliable.".format(count, MAX_TICKETS - count))
+#tell user if they have unsold tickets
+if ticket_count < MAX_TICKETS:
+    print("You have sold {} tickets.".format(ticket_count))
+    if ticket_count > 1:
+        print("There are {} places still avaliable.".format(MAX_TICKETS - ticket_count))
+    else:
+        print("There is one place still avaliable.")
 
 else:
     print("You have sold all avaliable tickets.")
