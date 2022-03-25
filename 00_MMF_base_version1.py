@@ -90,8 +90,6 @@ while name != "xxx" and ticket_count < MAX_TICKETS:
     ticket_count += 1
     ticket_sales += ticket_price
 
-    print("{} : ${:.2f}".format(name, ticket_price))
-
     if MAX_TICKETS - ticket_count != 1:
         print("You have {} seats left".format(MAX_TICKETS - ticket_count))
     else:
@@ -99,14 +97,14 @@ while name != "xxx" and ticket_count < MAX_TICKETS:
         print("You have ONE seat left.")
 #end of tickets loop
 
-#calculate profit etc
+#calculate ticket profit
 ticket_profit = ticket_sales - (5 * ticket_count)
 print("Ticket profit: ${:.2f}".format(ticket_profit))
 
 #tell user if they have unsold tickets
 if ticket_count < MAX_TICKETS:
     print("You have sold {} tickets.".format(ticket_count))
-    if ticket_count > 1:
+    if ticket_count == 1:
         print("There are {} places still avaliable.".format(MAX_TICKETS - ticket_count))
     else:
         print("There is one place still avaliable.")
