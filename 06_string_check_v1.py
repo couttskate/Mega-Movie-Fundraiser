@@ -21,5 +21,12 @@ def string_checker(question, to_check):
                 # rather than just the first letter
                 return item
 
-            
+            print("sorry that is not a valid response")
+
+# *** Main Routine starts here ***
+for item in range(0, 6):
+    want_snacks = string_checker("Do you want snacks?", ["yes", ["no"]])
+    print("Answer OK, you said:", want_snacks)
+    print()
+
 
