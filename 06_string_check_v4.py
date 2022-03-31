@@ -35,22 +35,32 @@ valid_snacks = [
     ["water", "w", "d"]
 ]
 
+#valid options for yes / no questions
 yes_no = [
     ["yes", "y"],
     ["no", "n"]
 ]
+
+# holds snack order for a single user.
+snack_order = []
+
+# asks user if they want a snack
 check_snack = "invalid choice"
 while check_snack == "invalid choice":
     want_snack = input("Do you want to order snacks? ").lower()
     check_snack = string_check(want_snack, yes_no)
 
+# if they say yes, ask what snacks they want (and add to our snack
+if check_snack == "Yes":
 
-# loop three times to make testing quicker
-for item in range(0, 6):
+    desired_snack = ""
+    while desired_snack != "xxx":
+        # ask user for desired snack and put it in lowercase
+        desired_snack = input("Snack: ").lower()
 
-    # ask user for desired snack and put it in lowercase
-    desired_snack = input("Snack: ").lower()
+        if desired_snack == "xxx":
+            break
 
-    # check if snack is valid
-    snack_choice = string_check(desired_snack, valid_snacks)
-    print("Snack Choice: ", snack_choice)
+        #check if snack is valid
+        snack_choice = string_check(desired_snack, valid_snacks)
+        print("Snack Choice: ", snack_choice)
