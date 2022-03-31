@@ -61,6 +61,23 @@ if check_snack == "Yes":
         if desired_snack == "xxx":
             break
 
-        #check if snack is valid
+        # check if snack is valid
         snack_choice = string_check(desired_snack, valid_snacks)
         print("Snack Choice: ", snack_choice)
+
+        # add snack to list...
+
+        #check that snack is not the exit code before adding
+        if snack_choice != "xxx" and snack_choice != "invalid choice":
+            snack_order.append(snack_choice)
+
+# show snack orders
+print()
+if len(snack_order ) == 0:
+    print("Snacks Ordered: None")
+
+else:
+    print("Snacks Ordered:")
+
+    for item in snack_order:
+        print(item)
