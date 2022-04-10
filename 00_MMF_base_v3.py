@@ -1,6 +1,6 @@
 # import statements
-import re
 import pandas
+import re
 
 # functions go here
 
@@ -43,12 +43,11 @@ def check_tickets(ticket_count, MAX_TICKETS):
     # tell user if they have unsold tickets
     if ticket_count < MAX_TICKETS:
         print("You have sold {} tickets.".format(ticket_count))
-        if ticket_count != 1:
-            print("There are {} places still avaliable.".format(MAX_TICKETS - ticket_count))
-
-        # warns user there is only 1 seat left
-        else:
+        if MAX_TICKETS - ticket_count == 1:
+            # warns user there is only 1 seat left
             print("There is ONE place still avaliable.")
+        else:
+            print("There are {} places still avaliable.".format(MAX_TICKETS - ticket_count))
 
     else:
         print("You have sold all avaliable tickets.")
