@@ -237,7 +237,7 @@ while name != "xxx" and ticket_count < MAX_TICKETS:
     print()
     if len(get_order) == 0:
         print("Snacks Ordered: None")
-    
+
     else:
         print("Snacks Ordered:")
 
