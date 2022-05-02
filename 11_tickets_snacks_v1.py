@@ -75,6 +75,10 @@ movie_frame["Sub Total"] = \
     movie_frame['Water']*price_dict['Water'] + \
     movie_frame['Pita Chips']*price_dict['Pita Chips'] + \
     movie_frame['M&Ms']*price_dict['M&Ms'] + \
-    movie_frame['Orange Juice'] + \
-    movie_frame['Ticket'] + \
+    movie_frame['Orange Juice']*price_dict['Orange Juice']
+
+# Shorten column names
+movie_frame = movie_frame.rename(columns = {'Orange Juice': 'OJ', 'Pita Chips':'Chips'})
+print(movie_frame)
+
 
