@@ -170,6 +170,14 @@ yes_no = [
     ["yes", "y"],
     ["no", "n"]
 ]
+
+# list of valid responses for payment method
+pay_method = [
+    ["cash", "ca"],
+    ["credit","cr"]
+]
+
+
 # initialise loop so that it runs at least once
 MAX_TICKETS = 5
 
@@ -181,12 +189,35 @@ ticket_sales = 0
 all_names = []
 all_tickets = []
 
+popcorn = []
+mms = []
+pita_chips = []
+water = []
+orange_juice = []
+
+snack_lists = [popcorn, mms, pita_chips, water, orange_juice]
+
+
 # Data Frame Dictionary
 movie_data_dict = {
     'Name': all_names,
-    'Ticket': all_tickets
+    'Ticket': all_tickets,
+    'Popcorn': popcorn,
+    'Water': water,
+    'Pita Chips': pita_chips,
+    'M&Ms': mms,
+    'Orange Juice': orange_juice
+
 }
 
+# Cost of each snack
+price_dict = {
+    'Popcorn': 2.5,
+    'Water': 2,
+    'Pita Chips': 4.5,
+    'M&Ms': 3,
+    'Orange Juice': 3.25
+}
 # Ask user if they have used the program before and show instructions if necessary
 
 # Loop to get ticket details
@@ -245,7 +276,18 @@ while name != "xxx" and ticket_count < MAX_TICKETS:
             print(item)"""
 
         print(get_order)
-   # get payment method
+
+    # ask for payment method
+    how_pay = "invalid choice"
+    while how_pay == "invalid choice":
+        how_pay = input("Please choose a payment method (cash / credit)").lower()
+        how_pay = string_check(how_pay, pay_method)
+
+    # apply surcharge (if necessary)
+    if how_pay == "Credit":
+        surcharge_multiplier = 0.05
+    else:
+        surcharge_multiplier = 0
 
 # end of tickets/snacks/payment loop
 
@@ -280,6 +322,7 @@ else:
     # Calculate snack price
 
 # Ask for payment method (and apply surcharge if necessary)
+
 
 # Calculate total sales and profit
 
