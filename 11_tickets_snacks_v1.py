@@ -79,6 +79,7 @@ movie_frame["Sub Total"] = \
 
 # Shorten column names
 movie_frame = movie_frame.rename(columns = {'Orange Juice': 'OJ', 'Pita Chips':'Chips'})
+
 print(movie_frame)
 
 
