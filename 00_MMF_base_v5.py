@@ -114,7 +114,7 @@ def get_snack():
     # , and possible abbreviations etc>
     valid_snacks = [
         ["popcorn", "p", "corn", "a"],
-        ["M&M's", "m&m's", "mms", "m", "b"], # first item is M&M's
+        ["M&Ms", "M&Ms", "mms", "m", "b"], # first item is M&Ms
         ["pita chips", "chips", "pc", "pita", "c"],
         ["water", "w", "d"],
         ["orange juice", "oj", "o", "j", "juice", "e"]
@@ -189,6 +189,7 @@ ticket_sales = 0
 all_names = []
 all_tickets = []
 
+# Snack lists
 popcorn = []
 mms = []
 pita_chips = []
@@ -197,6 +198,8 @@ orange_juice = []
 
 snack_lists = [popcorn, mms, pita_chips, water, orange_juice]
 
+# Store surcharge multiplier
+surcharge_mult_list = []
 
 # Data Frame Dictionary
 movie_data_dict = {
@@ -206,7 +209,8 @@ movie_data_dict = {
     'Water': water,
     'Pita Chips': pita_chips,
     'M&Ms': mms,
-    'Orange Juice': orange_juice
+    'Orange Juice': orange_juice,
+    'Surcharge_Multiplier': surcharge_mult_list
 
 }
 
@@ -287,6 +291,8 @@ while name != "xxx" and ticket_count < MAX_TICKETS:
     else:
         surcharge_multiplier = 0
 
+    surcharge_mult_list.append(surcharge_multiplier)
+
 # end of tickets/snacks/payment loop
 
 # print details
@@ -305,16 +311,36 @@ movie_frame["Sub Total"] = \
     movie_frame['M&Ms']*price_dict['M&Ms'] + \
     movie_frame['Orange Juice']*price_dict['Orange Juice']
 
+movie_frame["Surcharge"] = \
+    movie_frame["Sub Total"] * movie_frame["Surcharge_Multiplier"]
+
+movie_frame["Total"] = movie_frame["Sub Total"] + \
+    movie_frame['Surcharge']
+
 # Shorten column names
-movie_frame = movie_frame.rename(columns = {'Orange Juice': 'OJ', 'Pita Chips':'Chips'})
+movie_frame = movie_frame.rename(columns={'Orange Juice': 'OJ',
+                                            'Pita Chips':'Chips',
+                                            'Surcharge_Multiplier':'SM'})
 
-print(movie_frame)
+# Set up columns to be printed ...
+pandas.set_option('display.max_columns', None)
 
-# calculate ticket profit
+# Display numbers to 2 dp...
+pandas.set_option('display.precision', 2)
+
+print_all = input("print all columns?? (y) for yes ")
+if print_all == "y":
+    print(movie_frame)
+else:
+    print(movie_frame[['Ticket', 'Sub Total', 'Surcharge', 'Total']])
+
+print()
+
+# Calculate ticket profit...
 ticket_profit = ticket_sales - (5 * ticket_count)
 print("Ticket profit: ${:.2f}".format(ticket_profit))
 
-# tell user if they have unsold tickets
+# Tell user if they have unsold tickets
 if ticket_count < MAX_TICKETS:
     print("You have sold {} tickets.".format(ticket_count))
     if ticket_count == 1:
