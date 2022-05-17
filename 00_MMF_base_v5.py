@@ -2,7 +2,7 @@
 import pandas
 import re
 
-#testing for sophie
+
 # functions go here
 
 # checks that ticket name is not blank
