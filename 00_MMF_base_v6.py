@@ -114,10 +114,10 @@ def get_snack():
     # valid options for each snack <full name, letter code (a-e)
     # , and possible abbreviations etc>
     valid_snacks = [
-        ["popcorn", "p", "corn", "a"],
-        ["M&Ms", "M&Ms", "mms", "m", "b"], # first item is M&Ms
+        ["popcorn", "p", "pop", "corn", "a"],
+        ["M&Ms", "M&Ms", "mms", "mm" "m", "b"], # first item is M&Ms
         ["pita chips", "chips", "pc", "pita", "c"],
-        ["water", "w", "d"],
+        ["water", "w", "h20", "d"],
         ["orange juice", "oj", "o", "j", "juice", "e"]
     ]
 
@@ -125,7 +125,7 @@ def get_snack():
     snack_order = []
 
     desired_snack = ""
-    while desired_snack != "xxx":
+    while desired_snack != "xxx" or desired_snack != "n":
 
         snack_row = []
 
@@ -269,17 +269,8 @@ while name != "xxx" and ticket_count < MAX_TICKETS:
    # get snacks
 
     # asks user if they want a snack
-    check_snack = "invalid choice"
-    while check_snack == "invalid choice":
-        want_snack = input("Do you want to order snacks? ").lower()
-        check_snack = string_check(want_snack, yes_no)
+    snack_order = get_snack()
 
-    # if they say yes, ask what snacks they want (and add to our snack
-    if check_snack == "Yes":
-        snack_order = get_snack()
-
-    else:
-        snack_order = []
 
     # Assume no snacks have been bought...
     for item in snack_lists:
